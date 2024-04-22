@@ -1,0 +1,37 @@
+<div class="water-reading-form">
+    <form [formGroup]="waterForm" #formDirective="ngForm" (ngSubmit)="saveWaterReadings(formDirective)">
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Flow</mat-label>
+                <input matInput type="number" formControlName="flow" placeholder="Enter Flow Value" required min="1"/>
+                @if (waterForm.controls['flow'].hasError('min') && !waterForm.controls['flow'].hasError('required')) {
+                    <mat-error>Please enter a value > 0</mat-error>
+                    }
+                @if (waterForm.controls['flow'].hasError('required')) {
+                    <mat-error>Flow value is <strong>required</strong></mat-error>
+                }
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Pressure</mat-label>
+                <input matInput type="number" formControlName="pressure" placeholder="Enter Pressure Value" required min="1"/>
+                @if (waterForm.controls['pressure'].hasError('min') && !waterForm.controls['pressure'].hasError('required')) {
+                    <mat-error>Please enter a value > 0</mat-error>
+                    }
+                @if (waterForm.controls['pressure'].hasError('required')) {
+                    <mat-error>Pressure value is <strong>required</strong></mat-error>
+                }
+            </mat-form-field>
+        </p>
+        <p>
+            @if (formSubmitInProgress) {
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            }
+        </p>
+        <div class="button">
+            <button type="submit" mat-flat-button color="primary" disabled="{{waterForm.invalid || formSubmitInProgress}}">Submit</button>
+        </div>
+        
+    </form>
+</div>

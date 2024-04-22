@@ -1,0 +1,53 @@
+<mat-toolbar>
+    <button mat-icon-button aria-label="home icon">
+        <mat-icon color="primary">home</mat-icon>
+    </button>
+    <span>Water Book</span>
+</mat-toolbar>
+<div class="dashboard">
+    <mat-accordion multi>
+        <mat-expansion-panel expanded hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Enter Water Readings
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <app-water-reading-form (readingSubmitted)="onFormSumbmit()"></app-water-reading-form>
+        </mat-expansion-panel>
+        <mat-expansion-panel expanded>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Table View
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p class="tool-button">
+              <button title="Refresh" mat-icon-button aria-label="Refresh Table" (click)="refreshTable()">
+                <mat-icon>refresh</mat-icon>
+              </button>
+            </p>
+            @if (tableRefreshInProgress) {
+              <mat-progress-bar mode="query"></mat-progress-bar>
+            }
+            <app-readings-table [waterReadings]="tableReadings"></app-readings-table>
+          </mat-expansion-panel>
+          <mat-expansion-panel expanded hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Chart View
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p class="tool-button">
+              <button title="Refresh" mat-icon-button aria-label="Refresh Chart" (click)="refreshChart()">
+                <mat-icon>refresh</mat-icon>
+              </button>
+              <button title="Expand" mat-icon-button aria-label="Open chart in a dialog" (click)="expandChart()">
+                <mat-icon>open_in_new</mat-icon>
+              </button>
+            </p>
+            @if (chartRefreshInProgress) {
+              <mat-progress-bar mode="query"></mat-progress-bar>
+            }
+            <app-readings-chart [waterReadings]="chartReadings"></app-readings-chart>           
+          </mat-expansion-panel>
+    </mat-accordion>
+</div>
