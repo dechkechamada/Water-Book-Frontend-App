@@ -1,4 +1,4 @@
-# Water-Book FrontendApp
+# Water-Book Frontend App
 
 Angular version 17.1.2.
 
