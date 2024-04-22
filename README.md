@@ -9,7 +9,7 @@ Library used for Chart: Ag Chart
 
 Before running the UI App, we need to start the backend app to serve the APIs ( Refer to backend App [README.md](https://github.com/dechkechamada/Water-Book-backend-app/blob/master/README.md))
 
-T## Installation
+## Installation
 
 ```bash
 $ npm install
